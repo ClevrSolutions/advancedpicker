@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<widget id="advancedpicker.MobiScroll" mobile="true" needsEntityContext="true" xmlns="http://www.mendix.com/widget/1.0/">
+	<name>Advanced date/time picker</name>
+	<description>An advanced HTML5/Canvas based date picker widget.</description>
+	<icon>iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAkFJREFUeNqUUktoE1EUPdOM5mNSE1oqtZ8YLSFGI8oUBGk12XSluOjOjcUudGVB91lkKbgSVy7alXShiDsphIiCwWAoEpxAUxKLNnTRSEjaadRknve+NNMEurAX7rw799xz5rz3Bj8UBT8pX1FSXKW8yyu/b+7nYRhzmKvIB5AgIPxWiDMxXddS4XD2tqJ8R1ccgukCiKt/2vjls4nErejKCgqFAqLT09pILKZ1C0RTqQNsZkYrxuPHua822rjd3NnBdq2G/NwcvOPjaFar3fwejGeJZ5cChhC8Ok3DwLXlZVzIZHDMbkdldBSepSVL4FIkgnN+P07094NniefscdCiZnlhAU6XC3+psUfvjsFBS4CP0e12A6YJnu04QKidj8QRgznMVUX7AzaTtvI6mQRh9BHTWlutlly7e/OzsyCeTW7B+VSD8Tj7rinEkyDt0efzMYhflQq8Xi9qu7tYzeUQCAQkuVgsgmYPBPounhRT6YexJoH3Sg+AUtfRbwCLEy+kaJVuhR1wzbPoCBj1+sanejrV1ASoxvnrEYuf/5DDxNgYquRiMhSSvTS52XegSoFapeKfCtxgBymq8fnN+577L21tweVwIKPr0gEHO7C2YH6rK9n7i1rTeI7kzY8YJoscmyQ2MjAg66/r67gSDMr6Sz7fEWg76Hu2DaEod1qkvttooFAuWyeu0x/Ht8CxurZmOeBZ4tj5H1LLQpz2K4rHpqo4NTSE/wmeJVkPc9nG8B7d2qTD8RJHiN/EYe4/AQYAxVleA3q8pPoAAAAASUVORK5CYII=</icon>
+	<properties>
+		<property key="dateAttr" required="true" type="attribute">
+			<caption>Date attribute</caption>
+			<category>Data source</category>
+			<description>The Date Attribute.</description>
+			<attributeTypes>
+				<attributeType name="DateTime"/>
+			</attributeTypes>
+		</property>
+		<property defaultValue="default" key="theme" required="true" type="enumeration">
+			<caption>Datepicker theme</caption>
+			<category>Appearance</category>
+			<description>Datepicker theme</description>
+			<enumerationValues>
+				<enumerationValue key="default">Default</enumerationValue>
+				<enumerationValue key="android">Android</enumerationValue>
+				<enumerationValue key="senseui">Sense UI</enumerationValue>
+				<enumerationValue key="ios">iOS</enumerationValue>
+				<enumerationValue key="custom">Custom</enumerationValue>
+			</enumerationValues>
+		</property>
+		<property defaultValue="scroller" key="mode" required="true" type="enumeration">
+			<caption>Datepicker type</caption>
+			<category>Appearance</category>
+			<description>Datepicker type</description>
+			<enumerationValues>
+				<enumerationValue key="scroller">Scroller</enumerationValue>
+				<enumerationValue key="clickpick">Click-Pick</enumerationValue>
+			</enumerationValues>
+		</property>
+		<property defaultValue="date" key="preset" required="true" type="enumeration">
+			<caption>Datepicker mode</caption>
+			<category>Appearance</category>
+			<description>Datepicker mode</description>
+			<enumerationValues>
+				<enumerationValue key="date">Date</enumerationValue>
+				<enumerationValue key="datetime">DateTime</enumerationValue>
+				<enumerationValue key="time">Time</enumerationValue>
+			</enumerationValues>
+		</property>
+		
+		<property defaultValue="modal" key="display" required="true" type="enumeration">
+			<caption>Display mode</caption>
+			<category>Appearance</category>
+			<description>Display mode</description>
+			<enumerationValues>
+				<enumerationValue key="modal">Modal</enumerationValue>
+				<enumerationValue key="inline">Inline</enumerationValue>
+				<enumerationValue key="bubble">Bubble</enumerationValue>
+				<enumerationValue key="top">Top</enumerationValue>
+				<enumerationValue key="bottom">Bottom</enumerationValue>
+			</enumerationValues>
+		</property>
+		
+		<property defaultValue="false" key="showPreview" required="true" type="boolean">
+			<caption>Show preview</caption>
+			<category>Appearance</category>
+			<description>Show a preview of the current date/time in the top left corner.</description>
+		</property>
+		<property defaultValue="true" key="editable" required="true" type="boolean">
+			<caption>Editable</caption>
+			<category>Appearance</category>
+			<description>Disable the selection dialog</description>
+		</property>
+		
+		<property defaultValue="mm/dd/yy" key="dateFormat" required="true" type="string">
+			<caption>Date format</caption>
+			<category>Date options</category>
+			<description>The format for parsed and displayed dates (m - month of year (no leading zero), mm - month of year (two digit), M - month name short, MM - month name long, d - day of month (no leading zero), dd - day of month (two digit), y - year (two digit), yy - year (four digit)</description>
+		</property>
+        <property defaultValue="" key="defaultDate" required="false" type="string">
+            <caption>Default date</caption>
+            <category>Date options</category>
+            <description>Default date to show in scroller when no date is set. Example: '11/20/2012 18:12'</description>
+        </property>
+		<property defaultValue="mmddy" key="dateOrder" required="true" type="string">
+			<caption>Date order</caption>
+			<category>Date options</category>
+			<description>Display order and formating for month/day/year wheels. (m - month of year (no leading zero), mm - month of year (two digit), M - month name short, MM - month name long, d - day of month (no leading zero), dd - day of month (two digit), y - year (two digit), yy - year (four digit).</description>
+		</property>
+		<property defaultValue="1910" key="startYear" required="true" type="integer">
+			<caption>Start year</caption>
+			<category>Date options</category>
+			<description>Year to start the calendar at.</description>
+		</property>
+		<property defaultValue="2050" key="endYear" required="true" type="integer">
+			<caption>End year</caption>
+			<category>Date options</category>
+			<description>Year to end the calendar at.</description>
+		</property>
+		<property defaultValue="hh:ii A" key="timeFormat" required="true" type="string">
+			<caption>Time format</caption>
+			<category>Time options</category>
+			<description>The format for parsed and displayed dates (h - 12 hour format (no leading zero), hh - 12 hour format (leading zero), H - 24 hour format (no leading zero), HH - 24 hour format (leading zero), i - minutes (no leading zero), ii - minutes (leading zero), s - seconds (no leading zero), ss - seconds (leading zero), a - lowercase am/pm, A - uppercase AM/PM)</description>
+		</property>
+		<property defaultValue="hhiiA" key="timeWheels" required="false" type="string">
+			<caption>Time wheels</caption>
+			<category>Time options</category>
+			<description>Display order and formating of the time related wheels on the scroller. Characters have the same meaning as in the timeFormat option.</description>
+		</property>
+		<property key="emptyText" type="translatableString">
+			<caption>Text to show when empty</caption>
+			<category>Captions</category>
+			<description>Text to show when the date attribute is empty.</description>
+		</property>
+		<property key="setText" required="true" type="translatableString">
+			<caption>Caption for 'Select'</caption>
+			<category>Captions</category>
+			<description>Caption to show on the select button of the scroller.</description>
+			<translations>
+				<translation lang="en_US">Select</translation>
+			</translations>
+		</property>
+		<property key="cancelText" required="true" type="translatableString">
+			<caption>Caption for 'Cancel'</caption>
+			<category>Captions</category>
+			<description>Caption to show on the cancel button of the scroller.</description>
+			<translations>
+				<translation lang="en_US">Cancel</translation>
+			</translations>
+		</property>
+		<property key="onChangeMF" required="false" type="microflow">
+			<caption>On change microflow</caption>
+			<category>Behavior</category>
+			<description>Microflow to trigger when a change occurs</description>
+			<returnType type="Void"/>
+		</property>
+	</properties>
+</widget>
