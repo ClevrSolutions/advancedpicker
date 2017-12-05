@@ -1,5 +1,9 @@
-define([
-    "require",
+require({
+    packages: [{
+        name: "jquery110",
+        location: "../../widgets/jQueryLib", main: "jquery-110-min" 
+    }]
+},["jquery110",
     "dojo/_base/declare",
     "mxui/widget/_WidgetBase",
     "mxui/dom",
@@ -9,8 +13,9 @@ define([
     "dojo/dom-attr",
     "dojo/dom-class",
     "dojo/date/locale",
-    "dojo/dom-construct"
-], function(require, declare, _WidgetBase, dom, jQuery110, lang, dojoQuery, domAttr, domClass, dojoDate, domConstruct) {
+    "dojo/dom-construct",
+    "advancedpicker/MobiScroll"
+], function(jQuery110, declare, _WidgetBase, dom, jQuery110, lang, dojoQuery, domAttr, domClass, dojoDate, domConstruct) {
   return declare("advancedpicker.MobiScroll", [ _WidgetBase ], {
     dateAttr     : "",
 
@@ -275,16 +280,6 @@ define([
         return this.inherited(arguments, [ value ]);
     }
 });
-});
-
-require({
-	packages: [{
-		name: "jquery110",
-		location: "../../widgets/jQueryLib", main: "jquery-110-min" 
-	}]
-},
-
-["jquery110","advancedpicker/MobiScroll"], function(jQuery110) {
 
 (function(b){function m(a,c){function n(a){return b.isArray(f.readonly)?(a=b(".dwwl",r).index(a),f.readonly[a]):f.readonly}function o(a){var b="",c=f.height,o;for(o in M[a])b+='<li class="dw-v" data-val="'+o+'" style="height:'+c+"px;line-height:"+c+'px;">'+M[a][o]+"</li>";return b}function y(){var a=document.body,b=document.documentElement;return Math.max(a.scrollHeight,a.offsetHeight,b.clientHeight,b.scrollHeight,b.offsetHeight)}function m(a){h=b("li.dw-v",a).eq(0).index();d=b("li.dw-v",a).eq(-1).index();
 x=b("ul",r).index(a);e=f.height;l=g}function u(a){var b=f.headerText;return b?"function"==typeof b?b.call(C,a):b.replace(/{value}/i,a):""}function P(){g.temp=J&&null!==g.val&&g.val!=a.val()||null===g.values?f.parseValue(a.val()?a.val():"",g):g.values.slice(0);g.setValue(!0)}function E(a,c,o,d,y){f.validate.call(C,r,o,a);b(".dww ul",r).each(function(f){var d=b(this),e=b('li[data-val="'+g.temp[f]+'"]',d),d=e.index();if(!e.hasClass("dw-v")){for(var j=e,h=0,k=0;j.prev().length&&!j.hasClass("dw-v");)j=
